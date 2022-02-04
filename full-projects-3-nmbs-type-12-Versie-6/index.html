@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Mixer</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1%22%3E"></script>
+</head>
+
+<body>
+    <div id="end-screen" class="screen" style="display: none;">
+        <img id="end"  onclick="startGame()" src="media/images/game over.png"></img>
+    </div>
+
+    <div id="start-screen" class="screen" style="display: block;">
+        <img id="start" onclick="startGame()" src="media/images/startscreen.png"></img>
+    </div>
+    <canvas id="canvas" style="display: none;"></canvas>
+
+    <header>
+        <section id="countdownTimer" class="timer">
+            <article><span id="time">05:00</span>
+                <p>minuten!</p>
+            </article>
+        </section>
+    </header>
+
+    <section class="gevonden">
+        <button id="trainbutton" onclick="foundedTrain()">Next train!</button>
+
+        <img src="./media/images/type 18 trein.png" style="display: none;" id="treinfound1" alt="trein">
+        <img src="./media/images/type 51 trein.png" style="display: none;" id="treinfound2" alt="trein">
+        <img src="./media/images/type 211 trein.png" style="display: none;" id="treinfound3" alt="trein">
+        <img src="./media/images/type 608 trein.png" style="display: none;" id="treinfound4" alt="trein">
+        <img src="./media/images/type 64 trein.png" style="display: none;" id="treinfound5" alt="trein">
+        <img src="./media/images/type 551 trein.png" style="display: none;" id="treinfound6" alt="trein">
+        <img src="./media/images/pays de waes trein.png" style="display: none;" id="treinfound7" alt="trein">
+        <img src="./media/images/Type12.png" style="display: none;" id="treinfound8" alt="trein">
+        <img src="./media/images/HLE 13 trein.png" style="display: none;" id="treinfound9" alt="trein">
+        <img src="./media/images/HLE 21 trein.png" style="display: none;" id="treinfound10" alt="trein">
+    </section>
+
+    <main>
+      
+        <img src="./media/images/mystery train attributen.png" id="mysterytrain" alt="Rechthoekige border">
+        <div id="playField">
+            <div class="canvas" id="playField1">
+    
+            </div>
+            <div class="canvas" id="playField2">
+                
+            </div>
+            <div class="canvas" id="playField3">
+                
+            </div>
+        </div>
+        
+        <section class="leftmenu">
+            <article>
+                <p id="counttrain">0</p>
+                <p>/10</p>
+            </article>
+            <figure>
+                <section class="group">
+                    <img src="./media/images/rechthoek.png" id="bottom1" class="bottom" alt="Rechthoekige border">
+                    <img src="./media/images/activtype12.png" id="trein1" class="top" alt="trein">
+                </section>
+                <section class="group">
+                    <img src="./media/images/rechthoek.png" id="bottom2" class="bottom" alt="Rechthoekige border">
+                    <img src="./media/images/activtype13.png" id="trein2" class="top" alt="trein">
+                </section>
+                <section class="group">
+                    <img src="./media/images/rechthoek.png" id="bottom3" class="bottom" alt="Rechthoekige border">
+                    <img src="./media/images/activtype18.png" id="trein3" class="top" alt="trein">
+                </section>
+                <section class="group">
+                    <img src="./media/images/rechthoek.png" id="bottom4" class="bottom" alt="Rechthoekige border">
+                    <img src="./media/images/activtype21.png" id="trein4" class="top" alt="trein">
+                </section>
+                <section class="group">
+                    <img src="./media/images/rechthoek.png" id="bottom5" class="bottom" alt="Rechthoekige border">
+                    <img src="./media/images/activtype51.png" id="trein5" class="top" alt="trein">
+                </section>
+                <section class="group">
+                    <img src="./media/images/rechthoek.png" id="bottom6" class="bottom" alt="Rechthoekige border">
+                    <img src="./media/images/activtype64.png" id="trein6" class="top" alt="trein">
+                </section>
+                <section class="group">
+                    <img src="./media/images/rechthoek.png" id="bottom7" class="bottom" alt="Rechthoekige border">
+                    <img src="./media/images/activtype211.png" id="trein7" class="top" alt="trein">
+                </section>
+                <section class="group">
+                    <img src="./media/images/rechthoek.png" id="bottom8" class="bottom" alt="Rechthoekige border">
+                    <img src="./media/images/activtype551.png" id="trein8" class="top" alt="trein">
+                </section>
+                <section class="group">
+                    <img src="./media/images/rechthoek.png" id="bottom9" class="bottom" alt="Rechthoekige border">
+                    <img src="./media/images/activtype608.png" id="trein9" class="top" alt="trein">
+                </section>
+                <section class="group">
+                    <img src="./media/images/rechthoek.png" id="bottom10" class="bottom" alt="Rechthoekige border">
+                    <img src="./media/images/activtypepays.png" id="trein10" class="top" alt="trein">
+                </section>
+
+            </figure>
+
+            <article>
+                <p id="minusTrain">10</p>
+                <p>treinen <br>te vinden</p>
+            </article>
+
+        </section>
+        <df-messenger
+            intent="WELCOME"
+            chat-title="Pete"
+            agent-id="998169f2-63e6-42b0-a720-73d527b567f8"
+            language-code="en"
+            chat-icon="./media/images/nameless catdog.png"
+        ></df-messenger>
+    </main>
+
+    <footer>
+        <section class="attributen">Attributen</section>
+        <section class="footer">
+
+            <article class="clear">
+                <a class="button parallelogram" href="#">
+                    <span class="skew-fix" onclick="ClearAll()">x</span>
+                </a>
+            </article>
+
+            <article class="allAtri">
+                <span class="skew-fix">
+                    <a href="#"><img id="btnIconBlauw" onclick="placeOnField1()" src="./media/icons/blauw.png"></a>
+                    <a href="#"><img id="btnIconGrijsGeel" onclick="placeOnField1()" src="./media/icons/grijsgeel.png"></a>
+                    <a href="#"><img id="btnIconStoom" onclick="placeOnField2()" src="./media/icons/stoom.png"></a>
+                    <a href="#"><img id="btnIconMetaal" onclick="placeOnField2()" src="./media/icons/metaal.png"></a>
+                    <a href="#"><img id="btnIconGeit" onclick="placeOnField2()" src="./media/icons/geit.png"></a>
+                    <a href="#"><img id="btnIconPasEnGoed" onclick="placeOnField3()" src="./media/icons/personeel.png"></a>
+                    <a href="#"><img id="btnIconZeetrein" onclick="placeOnField3()" src="./media/icons/zeetrein.png"></a>
+                    <a href="#"><img id="btnIconGestroomlijnd" onclick="placeOnField3()" src="./media/icons/Stoomtrein.png"></a>
+                </span>
+                <span class="skew-fix">
+                    <a href="#"><img id="btnIconGroen" onclick="placeOnField1()" src="./media/icons/groen.png"></a>
+                    <a href="#"><img id="btnIconBlauwGeel" onclick="placeOnField1()" src="./media/icons/blawugeel.png"></a>
+                    <a href="#"><img id="btnIconDiesel" onclick="placeOnField2()" src="./media/icons/diesel.png"></a>
+                    <a href="#"><img id="btnIconKoning" onclick="placeOnField2()" src="./media/icons/koning.png"></a>
+                    <a href="#"><img id="btnIconMotorwagen" onclick="placeOnField2()" src="./media/icons/motor.png"></a>
+                    <a href="#"><img id="btnIconRidder" onclick="placeOnField3()" src="./media/icons/ridder.png"></a>
+                    <a href="#"><img id="btnIconElektriciteit" onclick="placeOnField3()" src="./media/icons/elektriciteit.png"></a>
+                    <a href="#"><img id="btnIconAlstom" onclick="placeOnField3()" src="./media/icons/alstom.png"></a>
+
+                </span>
+            </article>
+
+            <article class="klaar">
+                <a class="button parallelogram" href="#">
+                    <span class="skew-fix" id="btnMix" onclick="MixAttributes()">Mixen!</span>
+                </a>
+            </article>
+
+        </section>
+    </footer>
+</body>
+</script>
+
+</html>
